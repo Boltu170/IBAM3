@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource-Based & Institutionalist Theories of the Firm</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f39c12 0%, #d35400 100%);
+        padding: 20px;
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .slide-title {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+        font-size: 2em;
+        font-weight: 700;
+        padding: 20px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .slide {
+        display: none;
+        animation: fadeIn 0.5s;
+    }
+
+    .slide.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .card {
+        background: linear-gradient(135deg, #a8c5e8 0%, #7ba7d9 100%);
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        font-weight: bold;
+        font-size: 0.9em;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .card-header-icon {
+        font-size: 1.5em;
+        margin-right: 10px;
+    }
+
+    .card-content {
+        color: #1a1a1a;
+        font-size: 1.05em;
+    }
+
+    .card-content p {
+        margin-bottom: 12px;
+    }
+
+    .card-content ul {
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
+    .card-content li {
+        margin-bottom: 8px;
+    }
+
+    .question-input {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1em;
+        margin: 15px 0;
+        background: rgba(255, 255, 255, 0.9);
+    }
+
+    .show-answer-btn {
+        background: white;
+        color: #5b8ec4;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-size: 1em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .show-answer-btn:hover {
+        background: #f0f0f0;
+        transform: translateY(-2px);
+    }
+
+    .answer {
+        display: none;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 15px;
+        font-weight: 600;
+    }
+
+    .answer.show {
+        display: block;
+    }
+
+    .mcq-option {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 12px;
+        border-radius: 8px;
+        margin: 8px 0;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .mcq-option:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: translateX(5px);
+    }
+
+    .mcq-option input {
+        margin-right: 10px;
+    }
+
+    /* Chart styles */
+    .chart-container {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+    }
+
+    .bar-chart {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+        height: 250px;
+        margin-top: 20px;
+    }
+
+    .bar {
+        width: 40%;
+        background: linear-gradient(to top, #667eea 0%, #764ba2 100%);
+        border-radius: 10px 10px 0 0;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        padding-bottom: 10px;
+        color: white;
+        font-weight: bold;
+    }
+
+    .bar-label {
+        margin-top: 10px;
+        text-align: center;
+        color: #2c3e50;
+        font-weight: 600;
+    }
+
+    .bar-value {
+        position: absolute;
+        top: -25px;
+        font-size: 1.2em;
+        color: #2c3e50;
+        font-weight: bold;
+    }
+
+    .pie-chart-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 20px 0;
+    }
+
+    .pie-chart {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: conic-gradient(
+            #667eea 0% 31%,
+            #e74c3c 31% 100%
+        );
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .pie-legend {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .legend-color {
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+    }
+
+    .legend-text {
+        font-weight: 600;
+        color: #2c3e50;
+    }
+
+    .navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 40px;
+        padding: 20px 0;
+    }
+
+    .nav-btn {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 30px;
+        font-size: 1.1em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .nav-btn:hover:not(:disabled) {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .nav-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
+    .slide-counter {
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #667eea;
+        background: white;
+        padding: 10px 25px;
+        border-radius: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 6px;
+        background: #e0e0e0;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        transition: width 0.3s ease;
+    }
+
+    .visual-comparison {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+        height: 300px;
+        margin: 20px 0;
+    }
+
+    .comparison-item {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .comparison-bar {
+        width: 80px;
+        background: linear-gradient(to top, #667eea, #764ba2);
+        border-radius: 10px 10px 0 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 10px;
+        color: white;
+        font-weight: bold;
+        font-size: 1.5em;
+        position: relative;
+    }
+
+    .comparison-label {
+        margin-top: 15px;
+        font-weight: 600;
+        color: #2c3e50;
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+```
+    <!-- Slide 1: Recap Last Week -->
+    <div class="slide active" data-slide="1">
+        <h2 class="slide-title">Recap: Traditional Theories Say Firms Have Limits</h2>
+        
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📘</span>
+                <span>CONCEPT</span>
+            </div>
+            <div class="card-content">
+                <p>Last week we learned about two main economic theories that both conclude there IS a limit to how big firms can grow:</p>
+                <p><strong>Theory 1: Rising Marginal Costs (MCs)</strong></p>
+                <ul>
+                    <li>As firms produce more, costs per unit rise</li>
+                    <li>Eventually it becomes unprofitable to produce more</li>
+                    <li>This limits firm size</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Theory 2: Rising Costs of Planning (Coase)</strong></p>
+                <ul>
+                    <li>As firms grow, managing everything internally becomes more expensive</li>
+                    <li>Eventually it's cheaper to use markets than internal planning</li>
+                    <li>This limits firm size</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Both theories are based on diminishing marginal returns</strong> - the idea that adding more of one input (like workers) eventually gives you less and less extra output.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">💡</span>
+                <span>REAL EXAMPLE</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Rising MCs example:</strong> A bakery has one oven. The first 10 loaves are cheap to make. But to make 20 loaves, you need to run the oven longer, workers work overtime (expensive), and quality might drop. The 20th loaf costs more to make than the 10th loaf. Eventually, making more loaves costs so much it's not worth it.</p>
+                <p><strong>Rising planning costs example:</strong> A small company with 5 people can easily coordinate. But a company with 50,000 people needs managers, managers of managers, HR departments, complex IT systems—all expensive. Traditional theory says eventually managing gets so expensive the company stops growing.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">❓</span>
+                <span>QUESTION</span>
+            </div>
+            <div class="card-content">
+                <p><strong>According to traditional economic theories, what limits the size of firms?</strong></p>
+                <div class="mcq-option">
+                    <input type="radio" name="q1" value="a"> a) Government regulations only
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q1" value="b"> b) Rising marginal costs and rising planning costs
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q1" value="c"> c) Lack of customers
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q1" value="d"> d) Technology limitations
+                </div>
+                <button class="show-answer-btn" onclick="toggleAnswer('answer1')">Show Answer</button>
+                <div id="answer1" class="answer">
+                    Answer: b) Rising marginal costs and rising planning costs. Both theories predict firms will stop growing when these costs make further growth unprofitable.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📝</span>
+                <span>PLAIN ENGLISH</span>
+            </div>
+            <div class="card-content">
+                <p>Traditional economic theories say firms can't grow forever. Two main reasons: (1) making more stuff gets more expensive per unit (rising marginal costs), and (2) managing a big company gets more expensive and complicated (rising planning costs). Both predict there's a natural limit to how big a firm can get.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: The Problem - Reality vs Theory -->
+    <div class="slide" data-slide="2">
+        <h2 class="slide-title">The Problem: Some Firms Keep Growing Anyway!</h2>
+        
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📘</span>
+                <span>CONCEPT</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Potential Conflict Between Theory and Reality</strong></p>
+                <p>Traditional theories predict firms have limits to their size. But in reality, some firms seem to be able to grow without limit:</p>
+                <ul>
+                    <li>Amazon started selling books online, now sells everything and provides cloud computing</li>
+                    <li>Apple started making computers, now makes phones, watches, services, etc.</li>
+                    <li>Multinational corporations operate in dozens of countries with millions of employees</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Possible explanations:</strong></p>
+                <ul>
+                    <li>Maybe there IS a limit, just a very large one that hasn't been reached yet?</li>
+                    <li>Maybe the theories are wrong or incomplete?</li>
+                    <li>Worth exploring more to understand what's really happening</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">💡</span>
+                <span>REAL EXAMPLE</span>
+            </div>
+            <div class="card-content">
+                <p>Walmart is the world's largest private employer with over 2.1 million employees. It operates in 24 countries with over 10,000 stores. According to traditional theories, a company this big should have collapsed under rising marginal costs and unmanageable planning complexity. But Walmart continues to grow and remains profitable. This suggests the theories might be missing something important about how real firms actually work.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">❓</span>
+                <span>QUESTION</span>
+            </div>
+            <div class="card-content">
+                <p><strong>True or False: In reality, all firms eventually stop growing once they reach a certain size, exactly as traditional theories predict.</strong></p>
+                <input type="text" class="question-input" placeholder="Type your answer here...">
+                <button class="show-answer-btn" onclick="toggleAnswer('answer2')">Show Answer</button>
+                <div id="answer2" class="answer">
+                    Answer: False. Some firms continue to grow to massive sizes, seemingly without hitting the limits predicted by traditional theories. This creates a conflict between theory and observed reality.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📝</span>
+                <span>PLAIN ENGLISH</span>
+            </div>
+            <div class="card-content">
+                <p>Here's the puzzle: economic theories say firms should stop growing at a certain size. But look around—some companies are absolutely massive and keep getting bigger. Amazon, Walmart, Apple... they don't seem to have hit any limit. Either the theories are wrong, or we're missing something important. This week we'll explore what's really going on.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Do MCs Really Rise? -->
+    <div class="slide" data-slide="3">
+        <h2 class="slide-title">Do Marginal Costs Actually Rise?</h2>
+        
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📘</span>
+                <span>CONCEPT</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Questioning the Theory: Do MCs Even Rise?</strong></p>
+                <p>Rising marginal costs (MCs) mean that after a certain point, it becomes unprofitable for a firm to produce more. But do marginal costs actually rise in real firms?</p>
+                <p style="margin-top: 15px;"><strong>Blinder et al. (1998) Survey:</strong></p>
+                <ul>
+                    <li>Surveyed private, for-profit US firms</li>
+                    <li>Representative of around 70% of US economy</li>
+                    <li>Asked firms about their cost structures</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Surprising Result:</strong></p>
+                <p>For <strong>89% of surveyed firms</strong>, marginal costs are <strong>constant or decreasing</strong>—not increasing!</p>
+                <p>This directly contradicts the traditional theory that MCs rise as production increases.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📊</span>
+                <span>VISUAL DATA</span>
+            </div>
+            <div class="card-content">
+                <div class="chart-container">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: #2c3e50;">Blinder et al. (1998): Do Marginal Costs Rise?</h3>
+                    <div class="bar-chart">
+                        <div class="bar" style="height: 89%;">
+                            <span class="bar-value">89%</span>
+                            <span>Constant or Decreasing MCs</span>
+                        </div>
+                        <div class="bar" style="height: 11%; background: linear-gradient(to top, #e74c3c 0%, #c0392b 100%);">
+                            <span class="bar-value">11%</span>
+                            <span style="font-size: 0.9em;">Rising MCs</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px; text-align: center; color: #7f8c8d; font-style: italic;">
+                        Survey of US firms representing ~70% of US economy
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">💡</span>
+                <span>REAL EXAMPLE</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Software companies:</strong> Microsoft spends billions developing Windows. Making the first copy is extremely expensive. But copying that software to sell to the 2nd, 100th, or 1 millionth customer costs almost nothing. The marginal cost actually <em>decreases</em> as they sell more—not increases!</p>
+                <p><strong>Car manufacturing:</strong> Modern factories use automation. Making 1,000 cars costs about the same per car as making 10,000 cars—constant marginal costs. With economies of scale, making more might even reduce costs per unit—decreasing marginal costs!</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">❓</span>
+                <span>QUESTION</span>
+            </div>
+            <div class="card-content">
+                <p><strong>According to the Blinder et al. (1998) survey, what percentage of firms have constant or decreasing marginal costs?</strong></p>
+                <div class="mcq-option">
+                    <input type="radio" name="q3" value="a"> a) 11%
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q3" value="b"> b) 50%
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q3" value="c"> c) 70%
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q3" value="d"> d) 89%
+                </div>
+                <button class="show-answer-btn" onclick="toggleAnswer('answer3')">Show Answer</button>
+                <div id="answer3" class="answer">
+                    Answer: d) 89%. The vast majority of firms do NOT have rising marginal costs, contradicting traditional economic theory.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📝</span>
+                <span>PLAIN ENGLISH</span>
+            </div>
+            <div class="card-content">
+                <p>Traditional theory says marginal costs rise as you produce more. But when economists actually asked real businesses, 89% said their costs per unit stay the same or go DOWN as they produce more! This means one of the main reasons firms were supposed to stop growing (rising MCs) doesn't actually exist for most firms. Theory vs reality: reality wins.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Diminishing Marginal Returns? -->
+    <div class="slide" data-slide="4">
+        <h2 class="slide-title">What About Diminishing Marginal Returns?</h2>
+        
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📘</span>
+                <span>CONCEPT</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Diminishing Marginal Returns - The Theory</strong></p>
+                <p>Diminishing marginal returns is supposed to cause rising marginal costs. The theory says:</p>
+                <ul>
+                    <li>In the "short run," firms can only vary ONE factor of production (e.g., labor)</li>
+                    <li>Other factors are fixed (e.g., number of machines, factory size)</li>
+                    <li>Adding more and more workers to the same number of machines eventually gives you less extra output per worker</li>
+                    <li>This causes rising costs per unit</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>The Problem with This Theory:</strong></p>
+                <ul>
+                    <li>In reality, there's NO strict separation between "short run" and "long run"</li>
+                    <li>Firms can adjust multiple factors at once</li>
+                    <li>They can buy more machines, hire more workers, expand factories simultaneously</li>
+                    <li>Modern firms are flexible and adapt quickly</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">💡</span>
+                <span>REAL EXAMPLE</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Short-run thinking (theory):</strong> A restaurant has 5 tables. If you hire more waiters but still only have 5 tables, eventually extra waiters don't help much—they just get in each other's way. Diminishing returns!</p>
+                <p><strong>Real-world flexibility:</strong> But the restaurant can quickly add more tables, expand the kitchen, lease next door, or open a second location. They don't just keep adding waiters to the same 5 tables! Real businesses adjust multiple things at once. Amazon doesn't just hire more workers for existing warehouses—they build new warehouses, buy more trucks, and invest in automation simultaneously.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">❓</span>
+                <span>QUESTION</span>
+            </div>
+            <div class="card-content">
+                <p><strong>True or False: Diminishing marginal returns assumes firms can only change one factor of production in the short run.</strong></p>
+                <input type="text" class="question-input" placeholder="Type your answer here...">
+                <button class="show-answer-btn" onclick="toggleAnswer('answer4')">Show Answer</button>
+                <div id="answer4" class="answer">
+                    Answer: True. The theory assumes in the "short run" only one factor (like labor) can be varied while others (like capital/machines) stay fixed. But in reality, firms can adjust multiple factors simultaneously, so this strict separation doesn't really exist.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📝</span>
+                <span>PLAIN ENGLISH</span>
+            </div>
+            <div class="card-content">
+                <p>Diminishing marginal returns says if you keep adding workers but don't add machines, you'll eventually get less output per worker. That's true. But real companies don't do that! They add workers AND machines AND factories all together. The "short run vs long run" distinction that the theory relies on doesn't really exist in the real world. Firms are flexible and adjust everything at once.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Rising Costs of Planning? Penrose's Solution -->
+    <div class="slide" data-slide="5">
+        <h2 class="slide-title">Can Firms Solve Management Problems?</h2>
+        
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📘</span>
+                <span>CONCEPT</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Do Rising Planning Costs Limit Firm Size?</strong></p>
+                <p>Edith Penrose (economist) asked: Do firms really run into unmanageable planning/management problems as they grow?</p>
+                <p><strong>Answer: Yes, BUT they can solve them!</strong></p>
+                <p style="margin-top: 15px;"><strong>Solutions firms use:</strong></p>
+                <ul>
+                    <li><strong>Decentralization:</strong> Split the company into divisions that make their own decisions</li>
+                    <li><strong>Separation of ownership and control:</strong> Professional managers run the company (not just the owners)</li>
+                    <li><strong>M-form organization:</strong> Multidivisional structure where each division operates semi-independently (most US corporations adopted this by 1960s)</li>
+                    <li><strong>Technological improvements:</strong> Digital accounting, logistics software, communication tools make management easier</li>
+                </ul>
+                <p style="margin-top: 15px;">Management doesn't try to control everything—they intervene in crucial areas and set the overall direction/"tone" of the organization.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">💡</span>
+                <span>REAL EXAMPLE</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Google's structure:</strong> Google doesn't have one person trying to manage every project. Instead:</p>
+                <ul>
+                    <li>Alphabet (parent company) owns separate divisions: Google Search, YouTube, Waymo (self-driving cars), etc.</li>
+                    <li>Each division has its own management team making daily decisions</li>
+                    <li>Top leadership sets overall strategy and allocates resources</li>
+                    <li>Digital tools track performance across all divisions instantly</li>
+                </ul>
+                <p>This decentralized structure lets them manage a company with 150,000+ employees doing wildly different things, without collapsing under management complexity.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">❓</span>
+                <span>QUESTION</span>
+            </div>
+            <div class="card-content">
+                <p><strong>According to Penrose, which of the following helps large firms manage complexity?</strong></p>
+                <div class="mcq-option">
+                    <input type="radio" name="q5" value="a"> a) Having one manager control everything
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q5" value="b"> b) Decentralization and M-form organization
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q5" value="c"> c) Avoiding technology
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q5" value="d"> d) Staying small
+                </div>
+                <button class="show-answer-btn" onclick="toggleAnswer('answer5')">Show Answer</button>
+                <div id="answer5" class="answer">
+                    Answer: b) Decentralization and M-form (multidivisional) organization. Breaking the company into semi-independent divisions with their own managers solves the management complexity problem.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📝</span>
+                <span>PLAIN ENGLISH</span>
+            </div>
+            <div class="card-content">
+                <p>Yes, managing a huge company is hard. But firms figured out solutions: break the company into divisions, let each division manage itself, use professional managers, and use technology to keep track of everything. Top management doesn't try to control every detail—they just set the direction and handle big decisions. Problem solved! This is why planning costs don't actually limit firm size.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Penrose Quote - Structural Changes -->
+    <div class="slide" data-slide="6">
+        <h2 class="slide-title">How Firms Transform as They Grow</h2>
+        
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📘</span>
+                <span>CONCEPT</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Penrose on Organizational Transformation:</strong></p>
+                <blockquote style="border-left: 4px solid white; padding-left: 20px; margin: 20px 0; font-style: italic; background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px;">
+                    "The conclusion that the limited capacity of the individual will limit the size of firms has not been supported by events... The techniques for decentralizing administrative organization have been developed to a fine point, and the task of central management is apparently not one of attempting to comprehend and run the entire organization, but rather to intervene in a few crucial areas and to set the 'tone' of the organization.
+                    <br><br>
+                    With increasing size both the managerial function and the basic administrative structure have undergone fundamental changes... The differences in the administrative structure of the very small and the very large firms are so great that in many ways it is hard to see that the two species are of the same genus."
+                </blockquote>
+                <p><strong>Key Insight:</strong> Small firms and large firms are structured SO differently, they're almost different types of organizations. As firms grow, they fundamentally transform how they operate.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">💡</span>
+                <span>REAL EXAMPLE</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Small firm (10 employees):</strong> The owner knows everyone personally, makes all major decisions, probably does some of the actual work (accounting, sales, etc.). Informal structure. Everyone's in the same office.</p>
+                <p><strong>Large firm (10,000 employees):</strong> Professional CEO who's never met most employees. Separate departments (HR, Finance, Marketing, etc.), multiple layers of management, formal procedures for everything, offices in multiple cities/countries. Digital systems track everything.</p>
+                <p>They're both "firms," but they operate completely differently. The large firm isn't just a bigger version of the small firm—it's a fundamentally different organizational structure. That's Penrose's point.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">❓</span>
+                <span>QUESTION</span>
+            </div>
+            <div class="card-content">
+                <p><strong>According to Penrose, what is the main task of central management in very large firms?</strong></p>
+                <div class="mcq-option">
+                    <input type="radio" name="q6" value="a"> a) To comprehend and run every detail of the entire organization
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q6" value="b"> b) To intervene in crucial areas and set the 'tone' of the organization
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q6" value="c"> c) To personally manage every employee
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q6" value="d"> d) To avoid making any decisions
+                </div>
+                <button class="show-answer-btn" onclick="toggleAnswer('answer6')">Show Answer</button>
+                <div id="answer6" class="answer">
+                    Answer: b) To intervene in crucial areas and set the 'tone' of the organization. Top management doesn't try to control everything—they focus on key strategic decisions and organizational culture.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📝</span>
+                <span>PLAIN ENGLISH</span>
+            </div>
+            <div class="card-content">
+                <p>Penrose says small firms and huge firms are so different in structure that they're barely the same type of thing. As firms grow, they don't just get bigger—they completely transform. Small firm = owner runs everything. Huge firm = professional managers, separate divisions, formal systems. Top managers don't control every detail; they make big strategic decisions and set the company culture. This transformation is how firms overcome management limits.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Other Limits to Size? -->
+    <div class="slide" data-slide="7">
+        <h2 class="slide-title">Are There Other Limits to Firm Size?</h2>
+        
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📘</span>
+                <span>CONCEPT</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Potential Other Limits to Firm Size:</strong></p>
+                <ul>
+                    <li><strong>Limited market for outputs:</strong> Can't sell more than customers want to buy</li>
+                    <li><strong>Limited market for inputs:</strong> Can't buy unlimited labor, materials, etc.</li>
+                    <li><strong>Limited access to finance:</strong> Can't borrow unlimited money to fund growth</li>
+                    <li><strong>Increased risk with increased size:</strong> Bigger firms might be more vulnerable to shocks</li>
+                    <li><strong>Lack of willingness to grow:</strong> Owners/managers might not want the stress of growth</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Assessment: Are These Real Constraints?</strong></p>
+                <ul>
+                    <li>These are real problems for some firms</li>
+                    <li>But they're NOT insurmountable constraints</li>
+                    <li>At all times, there are firms able to overcome them</li>
+                    <li>Often, larger size makes these problems EASIER to overcome (not harder!)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">💡</span>
+                <span>REAL EXAMPLE</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Limited market for outputs?</strong> Amazon started selling books in the US. Market seemed limited. But they expanded to other products, other countries, then created new markets (cloud computing with AWS). They didn't hit a market limit—they created new markets!</p>
+                <p><strong>Limited access to finance?</strong> Small firms struggle to get loans. But large firms like Apple have so much profit and creditworthiness they can borrow billions easily. Larger size actually makes finance EASIER to access, not harder.</p>
+                <p><strong>Increased risk?</strong> Some think big firms are risky, but they can diversify across products and countries. If one market fails, others sustain them. Small firms often can't survive a single shock.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">❓</span>
+                <span>QUESTION</span>
+            </div>
+            <div class="card-content">
+                <p><strong>According to this lecture, which statement is TRUE about potential limits like finance and market size?</strong></p>
+                <div class="mcq-option">
+                    <input type="radio" name="q7" value="a"> a) They are absolute constraints that all firms eventually hit
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q7" value="b"> b) They are real problems but not insurmountable—some firms overcome them
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q7" value="c"> c) They don't exist at all
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q7" value="d"> d) They only affect large firms, not small ones
+                </div>
+                <button class="show-answer-btn" onclick="toggleAnswer('answer7')">Show Answer</button>
+                <div id="answer7" class="answer">
+                    Answer: b) They are real problems but not insurmountable—some firms overcome them. These challenges exist but successful firms find ways around them, and being larger often makes them easier to overcome.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📝</span>
+                <span>PLAIN ENGLISH</span>
+            </div>
+            <div class="card-content">
+                <p>Yes, there are other potential limits: running out of customers, running out of inputs to buy, difficulty getting loans, increased risk, or owners just not wanting to grow. But these aren't hard limits. Some firms overcome all of them. Often, being bigger actually makes these problems easier to solve, not harder. Big firms can access finance more easily, enter new markets, and diversify risk better than small firms.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Penrose Conclusion - No Limits to Size -->
+    <div class="slide" data-slide="8">
+        <h2 class="slide-title">Penrose's Conclusion: No Limits to Firm Size</h2>
+        
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📘</span>
+                <span>CONCEPT</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Summary of Limits to Size:</strong></p>
+                <ul>
+                    <li><strong>Diminishing marginal returns / rising MCs:</strong> NOT a problem (89% of firms have constant/decreasing MCs)</li>
+                    <li><strong>Limited managerial capacity:</strong> NOT a problem (solved by decentralization, M-form, technology)</li>
+                    <li><strong>Other limits (market, finance, risk):</strong> NOT a problem (can be overcome, easier with size)</li>
+                </ul>
+                <p style="margin-top: 20px;"><strong>Penrose's Conclusion:</strong></p>
+                <blockquote style="border-left: 4px solid white; padding-left: 20px; margin: 20px 0; font-style: italic; background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px;">
+                    "We have found nothing to prevent the indefinite expansion of firms as time passes, and clearly if some of the [benefits] of size [also make expansion easier], there is no reason to assume that a firm would ever reach a size in which it has taken full advantage of all these [benefits]."
+                </blockquote>
+                <p><strong>Translation:</strong> There are NO hard limits to how big firms can grow. In fact, being bigger makes it easier to grow even more!</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">💡</span>
+                <span>REAL EXAMPLE</span>
+            </div>
+            <div class="card-content">
+                <p><strong>The "virtuous cycle" of growth:</strong></p>
+                <p>Amazon got big selling books → Had money and infrastructure to expand into other products → Got even bigger → Had resources to create Amazon Web Services (cloud computing) → AWS profits funded more expansion → Now Amazon is in retail, cloud, streaming, devices, groceries, healthcare...</p>
+                <p>Each stage of growth made the next stage easier. Being big gave them advantages (resources, expertise, infrastructure, brand recognition) that made growing even bigger easier. There's no natural stopping point—the benefits of size keep accumulating.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">❓</span>
+                <span>QUESTION</span>
+            </div>
+            <div class="card-content">
+                <p><strong>True or False: According to Penrose, there are hard limits preventing firms from growing indefinitely.</strong></p>
+                <input type="text" class="question-input" placeholder="Type your answer here...">
+                <button class="show-answer-btn" onclick="toggleAnswer('answer8')">Show Answer</button>
+                <div id="answer8" class="answer">
+                    Answer: False. Penrose found NO hard limits preventing indefinite firm expansion. In fact, the benefits of size often make further expansion easier, creating a self-reinforcing cycle of growth.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📝</span>
+                <span>PLAIN ENGLISH</span>
+            </div>
+            <div class="card-content">
+                <p>Penrose's big conclusion: there's NO limit to how big firms can get. All the supposed limits (rising costs, management problems, market size) either don't exist or can be overcome. Even better, being bigger makes it easier to grow more—it's a self-reinforcing cycle. This explains why we see massive corporations that just keep growing. Theory was wrong; reality showed us firms can grow indefinitely.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Limits to Rate of Growth -->
+    <div class="slide" data-slide="9">
+        <h2 class="slide-title">But... Is There a Limit to How FAST Firms Can Grow?</h2>
+        
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📘</span>
+                <span>CONCEPT</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Important Distinction:</strong></p>
+                <ul>
+                    <li><strong>Limits to SIZE:</strong> NO - firms can grow indefinitely large</li>
+                    <li><strong>Limits to RATE of growth:</strong> MAYBE - there may be limits to how FAST firms can grow at any point in time</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Why Rate of Growth Might Be Limited:</strong></p>
+                <ul>
+                    <li>Management has <strong>limited capacity to manage growth</strong> at any given time</li>
+                    <li>You need experienced people to manage expansion—can't create experience instantly</li>
+                    <li>Management capacity can only be expanded so quickly (hiring, training takes time)</li>
+                    <li>Growing too fast might lead to chaos, poor decisions, quality problems</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>But This Can Be Mitigated:</strong></p>
+                <ul>
+                    <li>Mergers & Acquisitions (M&As) allow rapid growth by buying existing firms with their own management teams</li>
+                    <li>You acquire not just assets, but experienced managers and established systems</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">💡</span>
+                <span>REAL EXAMPLE</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Organic growth limitations:</strong> If Starbucks wants to open 1,000 new coffee shops, they need to find locations, hire thousands of employees, train them, set up supply chains—this takes years. There's a limit to how fast they can do this organically.</p>
+                <p><strong>M&A solution:</strong> Facebook wanted to grow into mobile photo sharing. Building that from scratch would take years. Instead, they bought Instagram for $1 billion (2012). Instant growth! They got the platform, the users, AND Instagram's experienced team all at once. Similarly, Google bought YouTube rather than build a competitor from scratch.</p>
+                <p>M&As let firms bypass the rate-of-growth limitation by acquiring existing capabilities.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">❓</span>
+                <span>QUESTION</span>
+            </div>
+            <div class="card-content">
+                <p><strong>How can firms overcome limits to their rate of growth?</strong></p>
+                <div class="mcq-option">
+                    <input type="radio" name="q9" value="a"> a) By slowing down growth completely
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q9" value="b"> b) Through mergers and acquisitions (M&As)
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q9" value="c"> c) By firing employees
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q9" value="d"> d) They cannot overcome these limits
+                </div>
+                <button class="show-answer-btn" onclick="toggleAnswer('answer9')">Show Answer</button>
+                <div id="answer9" class="answer">
+                    Answer: b) Through mergers and acquisitions (M&As). Buying existing firms with their own management teams and systems allows rapid growth without needing to build everything from scratch.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📝</span>
+                <span>PLAIN ENGLISH</span>
+            </div>
+            <div class="card-content">
+                <p>There's no limit to how BIG firms can get, but there might be limits to how FAST they can grow. You can't expand faster than you can hire and train good managers. But even this limit can be bypassed: instead of growing organically (slow), firms can buy other companies (M&As) and instantly gain their people, systems, and capabilities. So even the rate-of-growth limit is "soft"—it can be worked around.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Drivers of Growth - Resources -->
+    <div class="slide" data-slide="10">
+        <h2 class="slide-title">What Drives Firms to Keep Growing?</h2>
+        
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📘</span>
+                <span>CONCEPT</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Resource-Based View of the Firm</strong></p>
+                <p>Instead of focusing on limits, let's understand what DRIVES firms to grow. Penrose says we should see firms as a <strong>bundle of resources</strong>:</p>
+                <ul>
+                    <li><strong>Managerial resources:</strong> Managers, executives, decision-makers</li>
+                    <li><strong>Processes:</strong> Ways of doing things, routines, systems</li>
+                    <li><strong>Entrepreneurial resources:</strong> Innovation, vision, risk-taking ability</li>
+                    <li><strong>Labor:</strong> Workers, employees, skills</li>
+                    <li><strong>Machinery:</strong> Equipment, technology, tools</li>
+                    <li><strong>Materials:</strong> Raw inputs, supplies</li>
+                    <li><strong>Market opportunities:</strong> Potential customers, expansion possibilities</li>
+                    <li>...and more!</li>
+                </ul>
+                <p style="margin-top: 15px;">Firms don't just use resources—they ARE bundles of resources. Understanding this helps us understand growth.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">💡</span>
+                <span>REAL EXAMPLE</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Apple as a bundle of resources:</strong></p>
+                <ul>
+                    <li><strong>Managerial:</strong> Experienced executives who understand tech and design</li>
+                    <li><strong>Entrepreneurial:</strong> Culture of innovation, willingness to take risks on new products</li>
+                    <li><strong>Labor:</strong> Engineers, designers, retail staff, etc.</li>
+                    <li><strong>Machinery:</strong> Manufacturing equipment (mostly through partners like Foxconn)</li>
+                    <li><strong>Processes:</strong> Product development system, supply chain management, retail experience</li>
+                    <li><strong>Market opportunities:</strong> Smartphones, wearables, services, new categories</li>
+                </ul>
+                <p>Apple's growth comes from how they combine and use these resources. Their resources enable them to spot and exploit opportunities.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">❓</span>
+                <span>QUESTION</span>
+            </div>
+            <div class="card-content">
+                <p><strong>According to the resource-based view, a firm can be seen as:</strong></p>
+                <div class="mcq-option">
+                    <input type="radio" name="q10" value="a"> a) Just a legal entity
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q10" value="b"> b) A bundle of resources including managerial, entrepreneurial, labor, and machinery
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q10" value="c"> c) Only its physical assets
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q10" value="d"> d) Just its profits
+                </div>
+                <button class="show-answer-btn" onclick="toggleAnswer('answer10')">Show Answer</button>
+                <div id="answer10" class="answer">
+                    Answer: b) A bundle of resources including managerial, entrepreneurial, labor, machinery, processes, and market opportunities. This perspective helps us understand how and why firms grow.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📝</span>
+                <span>PLAIN ENGLISH</span>
+            </div>
+            <div class="card-content">
+                <p>Think of a firm not as just a "company" but as a collection of resources: people (managers, workers), things (machines, buildings), knowledge (processes, skills), and opportunities (markets to enter, products to make). This "resource-based view" helps us understand why firms grow—they're constantly using and combining resources in new ways to create value and expand.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: Unused Resources & Perpetual Growth -->
+    <div class="slide" data-slide="11">
+        <h2 class="slide-title">Why Growth Never Stops: The Unused Resources Principle</h2>
+        
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📘</span>
+                <span>CONCEPT</span>
+            </div>
+            <div class="card-content">
+                <p><strong>The Perpetual Growth Mechanism (Penrose)</strong></p>
+                <p style="margin-top: 15px;"><strong>1. Unused Resources Always Exist</strong></p>
+                <ul>
+                    <li>Firms always have some resources that aren't fully utilized</li>
+                    <li>Examples: Managers with spare time, machines running below capacity, unused knowledge/skills</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>2. Entrepreneurial Firms Seek to Use Them</strong></p>
+                <ul>
+                    <li>Entrepreneurial firms look for ways to utilize unused resources</li>
+                    <li>Haphazard process in small firms; more structured in large firms</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>3. Using Resources Creates MORE Unused Resources!</strong></p>
+                <ul>
+                    <li><strong>Principle of multiples:</strong> To use one resource fully, you need to acquire more of others</li>
+                    <li><strong>Indivisibility of resources:</strong> Resources come in chunks (can't hire half a manager)</li>
+                    <li>This creates NEW unused capacity</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>4. The Drive to Growth Never Stops</strong></p>
+                <ul>
+                    <li>Cycle repeats forever: unused resources → utilization → new unused resources → repeat</li>
+                    <li>This is why firms are perpetually driven to grow!</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">💡</span>
+                <span>REAL EXAMPLE</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Amazon's perpetual growth cycle:</strong></p>
+                <p><strong>Step 1:</strong> Amazon built warehouses and delivery infrastructure for online retail. But the warehouses weren't full 24/7 (unused resource).</p>
+                <p><strong>Step 2:</strong> They started offering "Fulfillment by Amazon"—storing and shipping products for other sellers. This used the spare capacity.</p>
+                <p><strong>Step 3:</strong> But to handle all those sellers, they needed more IT infrastructure. They built massive computing systems (more than they needed for retail)—NEW unused resource!</p>
+                <p><strong>Step 4:</strong> They rented out spare computing power as "Amazon Web Services" (cloud computing)—now a huge business worth billions.</p>
+                <p><strong>Step 5:</strong> AWS created new capabilities and cash flow—MORE unused resources to deploy...</p>
+                <p>The cycle never ends! Each solution creates new unused capacity to exploit.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">❓</span>
+                <span>QUESTION</span>
+            </div>
+            <div class="card-content">
+                <p><strong>According to Penrose, what happens when a firm utilizes its unused resources?</strong></p>
+                <div class="mcq-option">
+                    <input type="radio" name="q11" value="a"> a) The firm reaches its final size and stops growing
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q11" value="b"> b) Utilization creates NEW unused resources, continuing the growth cycle
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q11" value="c"> c) All resources become perfectly utilized with no waste
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q11" value="d"> d) The firm must shrink to reduce resources
+                </div>
+                <button class="show-answer-btn" onclick="toggleAnswer('answer11')">Show Answer</button>
+                <div id="answer11" class="answer">
+                    Answer: b) Utilization creates NEW unused resources, continuing the growth cycle. This is why growth never stops—using resources creates more unused capacity to exploit.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📝</span>
+                <span>PLAIN ENGLISH</span>
+            </div>
+            <div class="card-content">
+                <p>Here's why firms keep growing forever: You always have some unused resources (spare time, extra capacity, etc.). Entrepreneurial firms try to use them. But when you use unused resources, you need to buy MORE resources to support them—and those new resources aren't fully used either! So you now have NEW unused resources to exploit. The cycle repeats endlessly. It's like a never-ending game where solving one puzzle creates a new puzzle. That's why firms are perpetually driven to grow.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: How Big Are Firms Actually? -->
+    <div class="slide" data-slide="12">
+        <h2 class="slide-title">Just How Big Have Some Firms Actually Grown?</h2>
+        
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📘</span>
+                <span>CONCEPT</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Given:</strong></p>
+                <ul>
+                    <li>a) No apparent limits to absolute size</li>
+                    <li>b) Only soft limits to rate of growth (can be overcome by M&As)</li>
+                    <li>c) Perpetual drive to grow (unused resources cycle)</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Question: How big have some firms actually grown?</strong></p>
+                <p>Let's look at real data to see the scale of modern corporations...</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📊</span>
+                <span>VISUAL DATA</span>
+            </div>
+            <div class="card-content">
+                <div class="chart-container">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: #2c3e50;">World's Top 100 Economies</h3>
+                    <div class="pie-chart-container">
+                        <div class="pie-chart"></div>
+                        <div class="pie-legend">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #667eea;"></div>
+                                <div class="legend-text">31 Countries</div>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: #e74c3c;"></div>
+                                <div class="legend-text">69 Corporations</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px; text-align: center; color: #7f8c8d; font-style: italic;">
+                        Source: World Bank data
+                    </div>
+                    <div style="margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.3); border-radius: 10px;">
+                        <strong>What this means:</strong> Of the world's 100 largest economies (measured by revenue/GDP), only 31 are countries. The other 69 are corporations! Some companies are economically larger than entire nations.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">💡</span>
+                <span>REAL EXAMPLE</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Mind-blowing comparisons:</strong></p>
+                <ul>
+                    <li><strong>Walmart:</strong> Annual revenue of ~$600 billion. If it were a country, it would be the 24th largest economy in the world—bigger than Sweden, Poland, or Belgium.</li>
+                    <li><strong>Amazon:</strong> Revenue ~$575 billion. Bigger than the economies of Ireland, Singapore, or Nigeria.</li>
+                    <li><strong>Apple:</strong> Market capitalization hit $3 trillion in 2023. That's larger than the GDP of the UK or France!</li>
+                    <li><strong>Walmart employees:</strong> 2.1 million people. If Walmart were a city, it would be the 5th largest in the US (bigger than Houston or Phoenix).</li>
+                </ul>
+                <p>These firms are economic powerhouses that rival entire nations. This is the reality of "no limits to growth."</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">❓</span>
+                <span>QUESTION</span>
+            </div>
+            <div class="card-content">
+                <p><strong>According to World Bank data, how many of the world's top 100 economies are corporations (not countries)?</strong></p>
+                <div class="mcq-option">
+                    <input type="radio" name="q12" value="a"> a) 10
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q12" value="b"> b) 31
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q12" value="c"> c) 50
+                </div>
+                <div class="mcq-option">
+                    <input type="radio" name="q12" value="d"> d) 69
+                </div>
+                <button class="show-answer-btn" onclick="toggleAnswer('answer12')">Show Answer</button>
+                <div id="answer12" class="answer">
+                    Answer: d) 69. Out of the top 100 economies globally, 69 are corporations and only 31 are countries. This shows just how massive some firms have become.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-header-icon">📝</span>
+                <span>PLAIN ENGLISH</span>
+            </div>
+            <div class="card-content">
+                <p>So how big are firms actually? HUGE. Out of the world's top 100 economies, 69 are corporations—not countries! Companies like Walmart and Amazon have bigger revenues than most nations' entire GDP. This isn't theory—this is reality. Penrose was right: there's no limit to firm size. Some firms have grown to rival the economic power of entire countries. That's the world we live in.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+        <div class="slide-counter">
+            <span id="currentSlide">1</span> / <span id="totalSlides">12</span>
+        </div>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+    </div>
+
+</div>
+
+<script>
+    let currentSlide = 1;
+    const totalSlides = 12;
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const currentSlideNum = document.getElementById('currentSlide');
+        const progressFill = document.getElementById('progressFill');
+
+        // Wrap around
+        if (n > totalSlides) currentSlide = 1;
+        if (n < 1) currentSlide = totalSlides;
+        else currentSlide = n;
+
+        // Hide all slides
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+
+        // Show current slide
+        slides[currentSlide - 1].classList.add('active');
+
+        // Update counter
+        currentSlideNum.textContent = currentSlide;
+
+        // Update progress bar
+        const progress = (currentSlide / totalSlides) * 100;
+        progressFill.style.width = progress + '%';
+
+        // Disable/enable buttons
+        prevBtn.disabled = currentSlide === 1;
+        nextBtn.disabled = currentSlide === totalSlides;
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function changeSlide(direction) {
+        showSlide(currentSlide + direction);
+    }
+
+    function toggleAnswer(id) {
+        const answer = document.getElementById(id);
+        answer.classList.toggle('show');
+    }
+
+    // Initialize
+    document.getElementById('totalSlides').textContent = totalSlides;
+    showSlide(1);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'ArrowLeft') {
+            changeSlide(-1);
+        } else if (event.key === 'ArrowRight') {
+            changeSlide(1);
+        }
+    });
+</script>
+```
+
+</body>
+</html>
